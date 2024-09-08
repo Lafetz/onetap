@@ -1,0 +1,41 @@
+services:
+  migrate:
+    image: migrate/migrate
+    volumes:
+      - ./db/migrations:/migrations
+    command:
+      [
+        "-path",
+        "/migrations",
+        "-database",
+        "postgres://user:password@postgres:5432/loyality?sslmode=disable",
+        "up",
+      ]
+    networks:
+      - app
+    links:
+      - postgres
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=loyality
+    networks:
+      - app
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: password
+
+networks:
+  app:
+    driver: bridge
