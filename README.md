@@ -6,7 +6,7 @@ This document explains the design, architecture, and decisions behind the implem
 
 ## Design Overview
 
-<img width="1028" alt="image" src="https://raw.githubusercontent.com/Lafetz/onetap/main/imgs/1.png">
+<img width="1028" alt="image" src="https://raw.githubusercontent.com/Lafetz/onetap/main/img/1.png">
 
 The system is built using a A modular monolith architecture to enable scalability and maintain a clear separation of concerns. Key components include:
 
