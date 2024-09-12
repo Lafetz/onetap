@@ -1,14 +1,49 @@
 services:
+  http:
+    build:
+      context: ./http
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    environment:
+      - DB_URL=postgres://user:password@postgres/loyality?sslmode=disable
+      - ENV=dev
+      - PORT=8080
+      - LOG_LEVEL=debug
+      - REDIS_URL=cache:6379
+      - REDIS_PASS=eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks:
+      - app
+  mock_order:
+    build:
+      context: ./mock_order
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - app
+  notifi:
+    build:
+      context: ./notifi
+      dockerfile: ./Dockerfile
+    ports:
+      - 4000:4000
+    environment:
+      - REDIS_URL=cache:6379
+    networks:
+      - app
   migrate:
     image: migrate/migrate
     volumes:
-      - ./db/migrations:/migrations
+      - ./http/db/migrations:/migrations
     command:
       [
         "-path",
         "/migrations",
         "-database",
-        "postgres://user:password@postgres:5432/loyality?sslmode=disable",
+        "postgres://user:password@postgres/loyality?sslmode=disable",
         "up",
       ]
     networks:
@@ -26,16 +61,14 @@ services:
       - POSTGRES_DB=loyality
     networks:
       - app
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin4_container
+  cache:
+    image: redis:6.2-alpine
     restart: always
     ports:
-      - "8888:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: user@domain-name.com
-      PGADMIN_DEFAULT_PASSWORD: password
-
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks:
+      - app
 networks:
   app:
     driver: bridge

@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "b4b62802-016c-4308-b589-053284325dce",
+		"name": "market",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25831645"
+	},
+	"item": [
+		{
+			"name": "mock_customer_order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mock_siginin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"helloworld\",\n    \"password\":\"helloworld\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mock_get_customer_tier",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/merchants/4f981b0b-accf-4eb7-8018-7cd651c7e907/4f981b0b-accf-4eb7-8018-7cd651c7e922",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"merchants",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e907",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e922"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_tier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"minpoint\": 99,\n        \"name\": \"red\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/merchants/4f981b0b-accf-4eb7-8018-7cd651c7e907/tiers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"merchants",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e907",
+						"tiers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_tier",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"minpoint\": 46,\n        \"name\": \"bronze\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/merchants/4f981b0b-accf-4eb7-8018-7cd651c7e907/tiers/silver",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"merchants",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e907",
+						"tiers",
+						"silver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove_tier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/merchants/4f981b0b-accf-4eb7-8018-7cd651c7e907/tiers/red",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"merchants",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e907",
+						"tiers",
+						"red"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_tiers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/merchants/4f981b0b-accf-4eb7-8018-7cd651c7e907/tiers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"merchants",
+						"4f981b0b-accf-4eb7-8018-7cd651c7e907",
+						"tiers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create_cashback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"active\":true,\"description\":\"This field is required\",\"eligibleProducts\":[\"db2dd3ed-6791-4116-add1-ad9757fc1a33\"],\"name\":\"this\",\n  \"expiration\": \"2023-09-09T12:00:00Z\",\"percentage\":0.1\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/cashbacks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"cashbacks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_cashback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/cashbacks?merchantID=4f981b0b-accf-4eb7-8018-7cd651c7e907",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"cashbacks"
+					],
+					"query": [
+						{
+							"key": "merchantID",
+							"value": "4f981b0b-accf-4eb7-8018-7cd651c7e907"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_cashback",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"active\": true,\n    \"description\": \"This field is required\",\n    \"eligibleProducts\": [\n        \"db2dd3ed-6791-4116-add1-ad9757fc1a33\"\n    ],\n    \"name\": \"this\",\n    \"expiration\": \"2023-09-09T12:00:00Z\",\n    \"percentage\": 0.88\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/cashbacks/56f66e02-5383-481d-82b6-b5bef55a10eb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"cashbacks",
+						"56f66e02-5383-481d-82b6-b5bef55a10eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove_cashback",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/cashbacks/56f66e02-5383-481d-82b6-b5bef55a10eb",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"cashbacks",
+						"56f66e02-5383-481d-82b6-b5bef55a10eb"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
